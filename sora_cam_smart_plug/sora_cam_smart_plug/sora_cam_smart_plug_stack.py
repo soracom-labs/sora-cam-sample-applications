@@ -14,11 +14,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# Read .env file
-with open('./sora_cam_smart_plug/.env') as f:
-    env_vars = {line.split('=')[0]: line.split('=')[1].replace("\n", "")
-                for line in f}
-
+# read environment variables
+env_vars = {}
+env_vars['SORACOM_AUTH_KEY_ID'] = os.environ.get(
+    'SORACOM_AUTH_KEY_ID', '')
+env_vars['SORACOM_AUTH_KEY'] = os.environ.get(
+    'SORACOM_AUTH_KEY', '')
+env_vars['SWITCH_BOT_TOKEN'] = os.environ.get(
+    'SWITCH_BOT_TOKEN', '')
+env_vars['SWITCH_BOT_SECRET'] = os.environ.get(
+    'SWITCH_BOT_SECRET', '')
 
 # check interval by minutes
 CHECK_INTERVAL_MINUTES = int(os.environ.get(
